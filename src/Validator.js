@@ -2,7 +2,7 @@ import Messages from './Messages'
 
 export default class Validator {
     constructor(data, rules, customMessages = {}, customNames = {}) {
-        this.data = data
+        this.setData(data)
         this.rules = this.parseRules(rules)
         this.failedRules = []
         this.errors = null
@@ -41,6 +41,10 @@ export default class Validator {
 
     static make(data, rules, customMessages = [], customNames) {
         return new Validator(data, rules, customMessages, customNames)
+    }
+    
+    setData(data) {
+        this.data = data;
     }
 
     extend(ruleName, callback, customMessage) {
